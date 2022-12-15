@@ -1,0 +1,51 @@
+public class BST {
+    public class Node{
+        int element;
+        Node left;
+        Node right;
+        public Node(int e, Node l, Node r){
+            element=e;
+            left=l;
+            right=r;
+        }
+    }
+    Node root;
+    public BST(){
+        root=null;
+    }
+    public Node insert(Node temproot, int e){
+        if (temproot!=null){
+            if (e<temproot.element)
+                temproot.left = insert(temproot.left, e);
+            else if (e> temproot.element)
+                temproot.right=insert(temproot.right, e);
+        }
+        else {
+            Node n = new Node(e, null, null);
+            temproot=n;
+        }
+        return temproot;
+    }
+
+    public void inorder(Node temproot) {
+        if(temproot!=null){
+            inorder(temproot.left);
+            System.out.print(temproot.element+" ");
+            inorder(temproot.right);
+        }
+    }
+    public static void main(String args[]){
+        BST B= new BST();
+        B.root=B.insert(B.root,8);
+        B.insert(B.root,7);
+        B.insert(B.root,2);
+        B.insert(B.root,1);
+        B.insert(B.root,78);
+        B.insert(B.root,54);
+        B.insert(B.root,87);
+        B.insert(B.root,4);
+        B.insert(B.root,90);
+        B.inorder(B.root);
+        System.out.println("root is "+ B.root.right.element);
+    }
+}
