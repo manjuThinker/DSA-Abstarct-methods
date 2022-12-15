@@ -1,0 +1,50 @@
+public class QuesesLinkedList {
+
+    class Node{
+        int element;
+        Node next;
+        public Node(int e, Node n){
+            element=e;
+            next=n;
+        }
+    }
+    private Node Front;
+    private Node Rear;
+    private int size;
+
+    public QuesesLinkedList(){
+        Front=null;
+        Rear=null;
+        size=0;
+    }
+    public int length(){
+        return size;
+    }
+    public boolean Isempty(){
+        return size==0;
+    }
+    public void Enqueue(int e){
+        Node newest = new Node(e,null);
+        if (Isempty()){
+            Front=newest;
+        }
+        else {
+            Rear.next=newest;
+        }
+        Rear=newest;
+        size=size+1;
+    }
+    public int Dequeue(){
+        if (Isempty()){
+            System.out.println("Queue is empty");
+            return -1;
+        }
+        int e= Front.element;
+        Front=Front.next;
+        size=size-1;
+        if (Isempty()){
+            Rear=null;
+        }
+        return e;
+    }
+}
